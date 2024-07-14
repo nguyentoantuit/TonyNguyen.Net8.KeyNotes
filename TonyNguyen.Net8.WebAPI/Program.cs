@@ -21,8 +21,6 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-
 #region ShortCircuit
 
 var summaries = new[]
@@ -71,6 +69,21 @@ app.MapPost("/net8-upload",  async (IFormFile file) =>
 {
     return file != null ? Results.Ok(file.Name) : Results.BadRequest("File doesn't exist in payload");
 }).WithOpenApi();
+
+#endregion
+
+#region C#12-Collection Expression & spread operator
+
+string[] JobTitlesV1 = new[] { "CEO", "CFO", "COO", "CRO" };
+List<string> AddionalJobTitlesV2 = new List<string>
+{
+    "Head of Sustainability/Sustainability Manager",
+    "Head of Finance/Finance Manager",
+    "Head of Risk/Risk Manager"
+};
+
+app.MapGet("/v1/job-titles", () => JobTitlesV1);
+app.MapGet("/v2/job-titles", () => AddionalJobTitlesV2.Concat(JobTitlesV1));
 
 #endregion
 
