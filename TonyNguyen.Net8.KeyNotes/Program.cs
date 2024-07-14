@@ -1,17 +1,20 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 #region C#12-Alisas any type
-using StringList = System.Collections.Generic.List<string>;
-using Point = (int x, int y);
 
-StringList stringList = ["Tony", "Nguyen"];
+DrawPoint(1, 2);
+DrawLine(1, 1, 5, 5);
 
-void Draw(int x, int y)
+void DrawPoint(int x, int y)
 {
-    Console.WriteLine("Draw a line between {x} and {y}", x, y);
+    Console.WriteLine("Draw a point with X={x} and Y={y}", x, y);
 }
 
-Draw(1, 2);
+void DrawLine(int x1, int y1, int x2, int y2)
+{
+    Console.WriteLine($"Draw a line between Point({x1},{y1}) and Point({x2},{y2})");
+}
+
 
 #endregion
 
