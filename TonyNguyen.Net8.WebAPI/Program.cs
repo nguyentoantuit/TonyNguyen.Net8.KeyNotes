@@ -83,7 +83,12 @@ List<string> AddionalJobTitlesV2 = new List<string>
 };
 
 app.MapGet("/v1/job-titles", () => JobTitlesV1);
-app.MapGet("/v2/job-titles", () => AddionalJobTitlesV2.Concat(JobTitlesV1));
+app.MapGet("/v2/job-titles", () => GetJobTitles());
+
+IEnumerable<string> GetJobTitles()
+{
+    return JobTitlesV1.Concat(AddionalJobTitlesV2);
+}
 
 #endregion
 
