@@ -1,0 +1,6 @@
+@TonyNguyen.Net8.WebAPI_HostAddress = http://localhost:5175
+
+GET {{TonyNguyen.Net8.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
